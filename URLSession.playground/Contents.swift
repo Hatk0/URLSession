@@ -13,3 +13,5 @@ func getData(urlRequest: String) {
         }
     }.resume()
 }
+
+getData(urlRequest: "https://meowfacts.herokuapp.com/?lang=rus")
