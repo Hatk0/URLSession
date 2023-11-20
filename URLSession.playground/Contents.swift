@@ -13,9 +13,11 @@ func getData(urlRequest: String) {
                 print("Невозможно получить ответ от сервера")
             }
             
-            guard let data = data else { return }
-            let dataAsString = String(data: data, encoding: .utf8)
-            
+            if let data = data, let dataAsString = String(data: data, encoding: .utf8) {
+                print("Данные, пришедшие от сервера: \(dataAsString)")
+            } else {
+                print("Данные не получены или не могут быть преобразованы в нужный формат")
+            }
         }
     }.resume()
 }
