@@ -2,7 +2,10 @@ import Foundation
 
 func getData(urlRequest: String) {
     let urlRequest = URL(string: urlRequest)
-    guard let url = urlRequest else { return }
+    guard let url = urlRequest else { 
+        print("Ссылка сформированна некорректно")
+        return
+    }
     URLSession.shared.dataTask(with: url) { data, response, error in
         if error != nil {
             print("Ошибка: \(error)")
@@ -23,3 +26,6 @@ func getData(urlRequest: String) {
 }
 
 getData(urlRequest: "https://meowfacts.herokuapp.com/?lang=rus")
+
+// Проверка на работу некорректности ссылки
+//getData(urlRequest: "")
