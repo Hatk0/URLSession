@@ -6,7 +6,13 @@ func getData(urlRequest: String) {
     URLSession.shared.dataTask(with: url) { data, response, error in
         if error != nil {
             print("Ошибка: \(error)")
-        } else if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+        } else {
+            if let response = response as? HTTPURLResponse {
+                print("Код ответа от сервера: \(response.statusCode)")
+            } else {
+                print("Невозможно получить ответ от сервера")
+            }
+            
             guard let data = data else { return }
             let dataAsString = String(data: data, encoding: .utf8)
             
